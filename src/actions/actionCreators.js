@@ -1,6 +1,7 @@
 import {
   ADD_SERVICE, REMOVE_SERVICE, EDIT_SERVICE,
-  SET_EDIT_MODE_FOR_SERVICE, SET_NAME_FOR_EDITED_SERVICE, SET_PRICE_FOR_EDITED_SERVICE, RESET_EDIT_FORM,
+  SET_EDIT_MODE_FOR_SERVICE, SET_NAME_FOR_EDITED_SERVICE,
+  SET_PRICE_FOR_EDITED_SERVICE, RESET_EDIT_FORM, SET_FILTER
 } from './actionTypes';
 
 export function addService(name, price) {
@@ -29,4 +30,8 @@ export function setPriceForEditedService(price) {
 
 export function resetEditForm() {
   return { type: RESET_EDIT_FORM };
+}
+
+export default function setFilter(filter) {
+  return { type: SET_FILTER, payload: { filter } };
 }

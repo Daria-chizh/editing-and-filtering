@@ -5,7 +5,11 @@ import { removeService, setEditModeForService, resetEditForm } from '../actions/
 
 export default function ServiceList() {
   const dispatch = useDispatch();
-  const { items, editingId } = useSelector((state) => ({ items: state.serviceList, editingId: state.serviceEdit.id }));
+  const { items, editingId, filter } = useSelector((state) => ({
+    items: state.serviceList,
+    editingId: state.serviceEdit.id,
+    filter: state.serviceFilter.filter.toLowerCase(),
+  }));
 
   const handleRemove = (id) =>  {
     dispatch(removeService(id));
@@ -19,10 +23,11 @@ export default function ServiceList() {
     dispatch(setEditModeForService(id, name, price));
   };
 
+  const filteredItems = filter ? items.filter(o => o.name.toLowerCase().includes(filter)) : items;
   return (
     <ul>
-      {items &&
-        items.map(o => (<li key={o.id} style={{ marginTop: 10 }}>
+      {filteredItems &&
+      filteredItems.map(o => (<li key={o.id} style={{ marginTop: 10 }}>
           <div style={{ display:'inline-block', width: 200 }}>{o.name}</div>
           <div style={{ display:'inline-block', width: 100 }}>{o.price}</div>
           <button onClick={() => handleEdit(o.id, o.name, o.price)}>🖉</button>

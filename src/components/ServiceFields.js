@@ -34,7 +34,7 @@ export default function ServiceFields() {
 
   return (
     <Space style={{ paddingBottom: 20 }}>
-      <Input name="name" onChange={handleNameChange} value={name} style={{ width: 200 }} />
+      <Input name="name" onChange={handleNameChange} value={name} style={{ width: 200, marginTop: 20  }} />
       <Input name="price" onChange={handlePriceChange} value={price} style={{ width: 200 }} />
       <Button onClick={handleSave} type="primary">Save</Button>
       { id && <Button onClick={handleCancel} type="primary">Cancel</Button>}
